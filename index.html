@@ -15,7 +15,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/web-app-test/">
+  <base href="/band-calendar-web-app/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -32,6 +32,24 @@
 
   <title>Band Calendar</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- FCM: registrazione del service worker relativa al <base href>.
+       Il default di Firebase punta alla root del dominio e su GitHub Pages
+       (sottocartella /band-calendar-web-app/) fallirebbe con 404. -->
+  <script src="firebase-config.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('firebase-messaging-sw.js')
+          .then(function (registration) {
+            window.__FCM_SW_REGISTRATION__ = registration;
+          })
+          .catch(function (err) {
+            console.warn('Registrazione service worker FCM fallita:', err);
+          });
+      });
+    }
+  </script>
 </head>
 
 <body>
