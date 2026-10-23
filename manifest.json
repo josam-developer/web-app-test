@@ -1,0 +1,37 @@
+{
+    "name": "Band Calendar Test",
+    "short_name": "Band Calendar Test",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#101822",
+    "theme_color": "#101822",
+    "description": "App per la gestione dei calendari condivisi per band musicali.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/band-calendar-pwa-night-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/band-calendar-pwa-night-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/band-calendar-pwa-night-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/band-calendar-pwa-night-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/web-app-test/">
+
+  <meta charset="UTF-8">
+  <!-- Match mobile scaling before Flutter initializes its own viewport. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A Band Calendar management project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Band Calendar Test">
+  <link rel="apple-touch-icon" href="icons/band-calendar-pwa-night-192.png">
+  <meta name="theme-color" content="#101822">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png?v=transparent-2" />
+
+  <title>Band Calendar Test</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" href="splash-logo-transparent.png" as="image">
+  <style>
+    html, body { margin: 0; background: #101822; }
+    #splash {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #101822;
+      z-index: 10000;
+      pointer-events: none;
+      transition: opacity 180ms ease-out;
+    }
+    #splash.is-leaving { opacity: 0; }
+    .splash-content { position: relative; width: 144px; height: 144px; }
+    #splash img { display: block; width: 144px; height: 144px; }
+    .splash-progress {
+      position: absolute;
+      top: calc(100% + 26px);
+      left: 16px;
+      width: 112px;
+      height: 3px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #33485C;
+      opacity: 0;
+      animation: splash-reveal 0s 500ms forwards;
+    }
+    .splash-progress::after {
+      content: '';
+      display: block;
+      width: 33.333%;
+      height: 100%;
+      border-radius: inherit;
+      background: #136DEC;
+      animation: splash-progress 1200ms ease-in-out infinite;
+    }
+    @keyframes splash-reveal { to { opacity: 1; } }
+    @keyframes splash-progress {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(300%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #splash { transition: none; }
+      .splash-progress::after { animation: none; transform: translateX(100%); }
+    }
+  </style>
+
+  <!-- FCM: registrazione del service worker relativa al <base href>.
+       Il default di Firebase punta alla root del dominio e su GitHub Pages
+       (sottocartella /band-calendar-web-app/) fallirebbe con 404. -->
+  <script>
+    (() => {
+      const pending = [];
+      let navigate;
+      window.__registerPushNavigation = callback => {
+        navigate = callback;
+        pending.splice(0).forEach(link => navigate(link));
+      };
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('message', event => {
+          const data = event.data;
+          if (!data || data.type !== 'BAND_NOTIFICATION_OPEN' ||
+              typeof data.link !== 'string' || !data.link.startsWith('/') ||
+              data.link.startsWith('//') || data.link.includes('\\')) return;
+          if (navigate) navigate(data.link);
+          else pending.push(data.link);
+          if (event.ports[0]) event.ports[0].postMessage('queued');
+        });
+      }
+    })();
+  </script>
+  <script src="firebase-config.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('firebase-messaging-sw.js')
+          .then(function (registration) {
+            window.__FCM_SW_REGISTRATION__ = registration;
+          })
+          .catch(function (err) {
+            console.warn('Registrazione service worker FCM fallita:', err);
+          });
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="splash" aria-label="Band Calendar" role="img">
+    <div class="splash-content">
+      <img src="splash-logo-transparent.png" alt="" width="144" height="144">
+      <div class="splash-progress" aria-hidden="true"></div>
+    </div>
+  </div>
+  <script>
+    // Keep the logo visible through Dart initialization and the first redirect.
+    // Engine initialization alone does not mean a Flutter frame is on screen.
+    window.addEventListener('flutter-first-frame', () => {
+      requestAnimationFrame(() => {
+        const splash = document.getElementById('splash');
+        if (!splash) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          splash.remove();
+          return;
+        }
+        splash.classList.add('is-leaving');
+        setTimeout(() => splash.remove(), 180);
+      });
+    }, { once: true });
+  </script>
+  <script src="reminder-dedup.js"></script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+
+</html>
