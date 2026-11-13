@@ -1,0 +1,37 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 46rem;
+  padding: 1.5rem clamp(1rem, 5vw, 3rem) 3rem;
+}
+
+header {
+  border-bottom: 1px solid GrayText;
+  padding-bottom: 1rem;
+}
+
+h1, h2 {
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+a {
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
