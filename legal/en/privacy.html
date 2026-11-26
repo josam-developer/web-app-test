@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Privacy policy | Band Calendar</title>
+  <link rel="stylesheet" href="../legal.css">
+</head>
+<body>
+  <header>
+    <p>Band Calendar · <a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a> · <a href="terms.html">Terms of use</a></p>
+    <h1>Privacy policy</h1>
+  </header>
+  <main>
+    <h2>Who processes your data</h2>
+    <p>This policy applies to Band Calendar for Android and the web. The data controller is Giuseppe Amoruso, who operates Band Calendar in his personal capacity. For privacy questions or to exercise your rights, email <a href="mailto:info@bandcalendar.eu">info@bandcalendar.eu</a>.</p>
+    <p><a href="#account-deletion">Account deletion</a></p>
+
+    <h2>What data we use and why</h2>
+    <ul>
+      <li><strong>Account and profile.</strong> We use your email address, password through our authentication service, account identifier and profile details such as your name and avatar to register you, sign you in and identify you in projects. If you add a recovery email address, we use it to verify that address and help you regain access.</li>
+      <li><strong>Projects and calendar.</strong> We process memberships, roles, invitations, events, availability, places, poll responses and participation choices to coordinate your calendar. This information may come from you or other members, such as when a project manager invites you or a member creates an event. Access to shared information depends on the project, group and permissions. Notes marked private are intended for their authors.</li>
+      <li><strong>Notifications and messages.</strong> We use email addresses for verification, account recovery, invitations and other service messages. If you enable push notifications, we process the device’s notification token and related preferences. You can manage notifications in settings.</li>
+      <li><strong>Place search.</strong> When you use address suggestions, Google Places receives the search text and, when you select a place, the information needed to retrieve its details. The selected place may be associated with the event. Place search does not require the device’s GPS location. If you open directions, the destination opens in Google Maps. <a href="https://policies.google.com/privacy?hl=en">Google Privacy Policy</a>.</li>
+      <li><strong>Security, diagnostics and support.</strong> We process technical information such as IP addresses in service logs, device type, app version and error details. Diagnostic events may include account references or contextual data. If you contact us, we use your contact details and message to respond.</li>
+      <li><strong>Web subscriptions.</strong> Where web purchases are enabled, Stripe processes payments. We use customer references, subscription status and billing information needed to manage the purchase. Full card details are entered in Stripe’s checkout.</li>
+    </ul>
+    <p>We process account, calendar, requested features and purchase data to provide the requested service or perform the contract (GDPR Article 6(1)(b)). For security, abuse prevention and diagnostics, we rely on our legitimate interest in protecting the service and keeping it reliable (Article 6(1)(f)). When the law requires processing, for example for tax purposes, we rely on legal obligations (Article 6(1)(c)). An email address and password are required to create an account. Features such as an avatar, recovery email and place search are optional.</p>
+
+    <h2>How we protect your data</h2>
+    <p>The app communicates with its authentication service and backend over encrypted HTTPS connections. Supabase Auth stores passwords as bcrypt hashes. Access to calendar data requires an authenticated session, and the server checks project membership and role permissions. Before sending app diagnostics to Sentry, we limit the data included in reports. For example, we remove request data that could contain credentials or tokens from authentication reports.</p>
+
+    <h2>Who receives the data</h2>
+    <p>In addition to members who can access shared content according to their roles, recipients include Supabase for authentication, database and storage, Brevo for service emails, Google Firebase for notifications, Google Maps Platform for place search, Sentry for diagnostics, GitHub Pages for web hosting and Stripe for web purchases where enabled. If you export your calendar or share information outside Band Calendar, the service you choose also receives what you send to it.</p>
+    <h2>International transfers</h2>
+    <p>Supabase hosts the database, authentication and storage in Frankfurt, Germany (AWS region eu-central-1). Activities such as support and file delivery may involve processing outside that region. Supabase states that transfers to the United States and Singapore are governed by the European Commission’s standard contractual clauses included in its <a href="https://supabase.com/legal/customer-resources/data-processing-addendum">data processing addendum</a>. Brevo states that it hosts its databases in the European Union. Sentry stores the European organization’s diagnostic events in Frankfurt. Some organization metadata may be processed in the United States, subject to the <a href="https://sentry.io/trust/">transfer safeguards described by Sentry</a>.</p>
+    <p>Firebase Cloud Messaging runs on Google’s global infrastructure. For processing outside the European Economic Area (EEA), the safeguards in the <a href="https://firebase.google.com/terms/data-processing-terms">Firebase terms</a> apply and, for place search, those in the <a href="https://cloud.google.com/maps-platform/terms/maps-controller-terms">Google Maps Platform data protection terms</a> apply. GitHub Pages logs visitors’ IP addresses for site security. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement#international-data-transfers">GitHub</a> and, where purchases are made on the web, <a href="https://stripe.com/legal/dta">Stripe</a> describe their transfers, including to the United States, in their respective documents.</p>
+    <p>Depending on the recipient and the processing involved, providers’ safeguards for transfers outside the EEA include European Commission adequacy decisions, including the EU–U.S. Data Privacy Framework for US organizations covered by certification, or standard contractual clauses. Email <a href="mailto:info@bandcalendar.eu">info@bandcalendar.eu</a> to find out which safeguard applies to a transfer and request a copy.</p>
+    <p>Messages sent to info@bandcalendar.eu are forwarded by Namecheap to the controller’s Gmail inbox. For transfers outside the EEA, <a href="https://www.namecheap.com/legal/universal/data-processing-addendum/">Namecheap</a> provides standard contractual clauses for transfers to which they apply. <a href="https://policies.google.com/privacy/frameworks?hl=en">Google</a> identifies the EU–U.S. Data Privacy Framework for covered transfers to the United States and standard contractual clauses where required in the absence of an adequacy decision.</p>
+
+    <h2>Local storage and retention</h2>
+    <p>The app and website use device or browser storage for sessions and preferences. The app may keep a local copy of calendar data for offline access and for the Android widget if configured.</p>
+    <p>We retain account data for as long as needed to provide the service and handle account closure. Shared content that other members need may remain in a project under the calendar’s management rules. We retain data required by law for the applicable statutory period and data needed to handle disputes for as long as the matter requires.</p>
+    <ul>
+      <li><strong>Backend logs and backups.</strong> Under the Supabase Free plan, API and database logs are typically available for one day. The plan does not include automatic backups that the controller can access. The controller does not keep manual copies of the database.</li>
+      <li><strong>Diagnostics.</strong> Sentry’s retention depends on the plan and data type. For standard diagnostic events, Sentry lists a window of 30 to 90 days before accessible data expires.</li>
+      <li><strong>Service emails.</strong> Brevo is configured to delete transactional email logs after one month for all senders. Saving previews of new messages is disabled.</li>
+      <li><strong>Push notifications.</strong> Firebase retains the installation identifier until its deletion is requested via the API. From that point, Google states that removal from live and backup systems takes up to 180 days.</li>
+      <li><strong>Support.</strong> The controller keeps messages for as long as needed to resolve the request and handle any follow-up. Longer retention is limited to what is necessary to meet legal obligations or handle disputes.</li>
+    </ul>
+
+    <h2 id="account-deletion">Account deletion</h2>
+    <p>You can request deletion of your Band Calendar account and associated data even if you cannot access the app. <a href="mailto:info@bandcalendar.eu?subject=Band%20Calendar%20-%20Account%20deletion">Send a deletion request to info@bandcalendar.eu</a>, preferably from the email address linked to your account. If you no longer have access to that address, include it in your request and we’ll help you verify that the account is yours. Do not send your password.</p>
+    <p>In the app, open your profile, select <strong>Delete account</strong> and confirm. If you own any projects, transfer them to another member or delete them before completing account deletion. If you cannot access the app or need help with these steps, contact us at the same address.</p>
+    <p>Deletion removes your sign-in account and profile. Calendar entries in active projects may remain available to other members and are reassigned to the project owner. See “Local storage and retention” for retention periods for logs and other remaining data.</p>
+
+    <h2>How to exercise your rights</h2>
+    <p>You can update your details from your profile. Email <a href="mailto:info@bandcalendar.eu">info@bandcalendar.eu</a> to request access, correction, erasure, restriction or portability, or to object to processing, subject to the conditions in the GDPR. Where processing relies on consent, you can withdraw it at any time. You can lodge a complaint with the <a href="https://www.garanteprivacy.it/">Italian Data Protection Authority</a> or another competent supervisory authority.</p>
+  </main>
+</body>
+</html>
